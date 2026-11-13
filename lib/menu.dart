@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -74,7 +74,7 @@ class MyHomePage extends StatelessWidget {
                       padding: const EdgeInsets.all(20),
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
-                      crossAxisCount: 3,
+                      crossAxisCount: 2,
                       // shrinkWrap agar ukuran kisi menyesuaikan tinggi konten anak.
                       shrinkWrap: true,
                       children: items.map((ItemHomepage item) {
