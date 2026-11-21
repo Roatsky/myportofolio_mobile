@@ -1,6 +1,9 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
+import 'package:myportofolio_mobile/screens/experience_form.dart';
+import 'package:myportofolio_mobile/screens/education_form.dart';
+import 'package:myportofolio_mobile/screens/skills_form.dart';
 
 class ItemCard extends StatelessWidget {
   final ItemHomepage item;
@@ -16,15 +19,6 @@ class ItemCard extends StatelessWidget {
       child: InkWell(
         // Area responsif terhadap sentuhan
         onTap: () {
-          // Memunculkan SnackBar ketika diklik
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!"),
-              ),
-            );
-
           // Navigate ke halaman yang sesuai
           if (item.name == "Tambah Proyek") {
             Navigator.push(
@@ -33,6 +27,40 @@ class ItemCard extends StatelessWidget {
                 builder: (context) => const ProjectFormPage(),
               ),
             );
+          }
+          else if (item.name == "Tambah Experience") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ExperienceFormPage(),
+              ),
+            );
+          }
+          else if (item.name == "Tambah Education") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const EducationFormPage(),
+              ),
+            );
+          }
+          else if (item.name == "Tambah Skills") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SkillsFormPage(),
+              ),
+            );
+          }
+          else {
+            // Memunculkan SnackBar ketika diklik
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(
+                  content: Text("Kamu telah menekan tombol ${item.name}!"),
+                ),
+              );
           }
         },
         child: Container(

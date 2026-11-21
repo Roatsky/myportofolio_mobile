@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:myportofolio_mobile/widgets/left_drawer.dart';
 // TODO: Impor drawer yang sudah dibuat sebelumnya
 
 class ProjectFormPage extends StatefulWidget {
@@ -37,6 +38,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
         foregroundColor: Colors.white,
       ),
       // TODO: Tambahkan drawer yang sudah dibuat di sini
+      drawer: const LeftDrawer(),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
@@ -190,7 +192,6 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                                   onPressed: () {
                                     Navigator.pop(context);
                                     _formKey.currentState!.reset();
-                                    Navigator.pop(context);
                                   },
                                 ),
                               ],
