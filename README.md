@@ -6,38 +6,13 @@ Kelas : PBP F
 
 Aplikasi ini merupakan portofolio pribadi saya yang saya kembangkan sebagai proyek untuk tugas PBP Semester Gasal 2026/2027. Aplikasi portofolio ini memiliki halaman dasar yang memiliki tombol untuk emnunjukan proyek, pengalaman, pendidikan, keterampilan, dan logout. 
 
-Dalam tugas 7 ini saya menggunakan AI Gemin. Saya membangun applikasi ini dari template awal yang tim asdos PBP berikan dan saya gunakan AI untuk membantu pemahaman penggunaan dan koding dalam flutter serta bug fix.
+Dalam tugas 8 ini saya menggunakan AI Gemini. Saya membangun applikasi ini dari template awal serta contoh-contoh coding flutter yang diberikan tim asdos pbp. Untuk penggunaan AI, saya gunakan AI untuk membantu pemahaman penggunaan dan koding dalam flutter dan bug fix tentang implementasi navigasi ke form model.
 
 Pertanyaan Refleksi:
-1. Widget tree adalah strukur hierarchy berbentuk pohon yang bekerja sebagai seluruh UI aplikasi flutter. Setiap elemen visual, seperti teks, tombol, gambar, hingga pengaturan jarak, disusun sebagai simpul (node) di dalam pohon ini. Dalam pohon ini, ada relasi antar parent dan child dimana child dibungkus oleh parent dan mendapatkan informasi seperti ukuran dan posisi.
+1. Navigator.push() bekerja dengan menambahkan rute halaman ke stack navigator, Navigator.pop() bekerja dengan menghapus rute halaman paling atas di stack navigator. dan Navigator.pushReplacement() bekerja sebagai gabungan pop dan push (pop halaman paling atas lalu push rute halaman baru). Untuk opsi Home di LeftDrawer, itu menggunakan Navigator.pushReplacement() untuk mengarahkan pengguna ke MyHomePage. Karena rute sebelumnya di pushReplacement dan bukan push, halaman utama tidak menumpuk berkali-kali di dalam stack.
 
-2. Semua widget dan fungsi:
-    a. MyApp: Widget root utama yang mengatur tema dan halaman awal
-    b. MaterialApp: Membungkus seluruh aplikasi dengan konfigurasi Google Material Design
-    c. MyHomePage: Widget halaman utama
-    d. Scaffold: Kerangka tata letak dasar untuk snackbar, appbar, dan body
-    e. Appbar: Menampilkan bar navigasi bagian atas halaman aplikasi
-    f. SingleChildScrollView Membuat konten di dalamnya dapat discroll
-    g. Padding: Memberi padding sekeliling widget 
-    h. Column: Menyusun daftar widget anak secara vertikal 
-    i. Row: Menyusun daftar widget anak secara horizontal
-    j. InfoCard: Menampilkan kartu informasi identitas
-    k. Card: Kontainer bergaya kartu
-    l. Container: Mengatur dimensi ukuran width, padding, dan tata letak anak (card) di dalamnya
-    m. GridView.count: Menampilkan kumpulan widget dengan jumlah kolom tetap
-    n. ItemCard: Menampilkan setiap tombol aksi pada menu portofolio
-    o. Material: Menyediakan permukaan kanvas Material Design
-    p. InkWell: Mendeteksi interaksi sentuhan pengguna
-    q. SnackBar: Menampilkan pesan notifikasi paska tekan tombol
-    r. Icon: Menampilkan ikon
-    s. SizedBox: Kotak kosong dengan tinggi tertentu untuk memberikan jarak vertikal antar-widget.   
-    t. Center: Memposisikan widget anaknya tepat di tengah ruang yang tersedia secara horizontal maupun vertikal.   
-    u. Text: Menampilkan teks serta menentukan fontWeight, fontSize, color, dan textAlign.   
+2. Scaffold bekerja sebagai kerangka tata letak dasar standar material design di setiap halaman, AppBar bekerja sebagai widget paling atas halaman yang menunjukan judul halaman serta posisi tombol navigasi, dan Drawer bekerja sebagai penyimpan isi sidebar yang biasanya digunakan untuk menyimpan navigasi. Ketiga ini mengandung komponen yang di gunakan disetiap halaman, maka penggunaanya menjamin konsistensi antar halaman. Contoh penggunaan warna tema portofolio ada di halaman LeftDrawer, semua form, dan main dalam bentuk Colors.indigo sebagai BoxDecoration, backgroundColor, dan seedColor.
 
-3. MaterialApp adalah widget pembungkus tingkat atas yang membungkus aplikasi agar mengikuti sistem desain Google Material Design. MaterialApp bekerja sebagai root widget karena sebagai root widget, MaterialApp bekerja sebagai pondasi dimana merupakan parent semua widget seterusnya dan akan berikan informasi berkenai navigasi, tema, dan pengaturan yang sesuai dengan sistem desain Google Material Design.
+3. Tata letak formulir terbentuk oleh Form, SingleChildScrollView, Column, dan Padding. SingleChildScrollView dipilih agar halaman scrollable dan membuat halaman tetap menampilkan data bahkan jika ruang layar terbatas. Column dipilih karena form ditulis dengan alur pengisian data dari atas ke bawah. Padding dipilih agar memberikan whitespace di sekitar elemen input agar batas kotak input tidak saling menempel.
 
-4. Stateless widget merupakan widget yang bersifat immutable (nilai atau properti di dalamnya bersifat tetap sejak pertama kali dibuat) sedangkan stateful widget merupakan widget yang memiliki state (data yang dapat berubah-ubah selama siklus hidup widget). Stateless widget digunakan untuk UI yang menampilkan informasi statis (seperti infocard di proyek ini), sedangkan stateful widget digunakan untuk UI yang penampilannya dinamis seperti ada animasi, pembaruan data, user interaction, dll.
-
-5. BuildContext adalah objek peganggan (handle) yang merepresentasikan lokasi spesifik sebuah widget di dalam widget tree. BuildContext sangat penting sebagai cara efisien dalam mencari informasi dari ancestor. BuildContex digunakan dalam build untuk mengambil parameter mengenaik navigasi, tema, ukuran, warna, dll yang dibutuhkan untuk membangun UI aplikasi
-
-6. Hot reload mengulang penampilan agar kode baru tertunjuk namun menyimpan status aplikasi, sedangkan hot restart memuat kode baru dengan menghilangkan kondisi app dan inisialisasi ulang  main. Karena hot reload hanya bekerja jika mengubah tampilan flutter tanpa mengubah inti kodenya, maka hot reload hanya bisa untuk perubahan UI sedangkan hot restart untuk inisialisasi ulang widget atau mengubah variabel global dan full restart untuk perubahan kode native atau menambahkan dependensi baru
+4. GlobalKey<FormState> bekerja sebagai pemegang referensi ke widget Form yang bisa digunakan untuk semua kolom input. Validator bekerja sebagai fungsi callback untuk memeriksa nilai input pengguna. Validate() bekerja dengan mengeksekusi seluruh fungsi validator di setiap kolom formulir secara serentak. Contoh nilai yang ditolak yaitu seperti input berupa string kosong pada kolom Nama Proyek atau Deskripsi Pengalaman karena pengecekan value == null || value.trim().isEmpty mengembalikan pesan error "tidak boleh kosong!".
