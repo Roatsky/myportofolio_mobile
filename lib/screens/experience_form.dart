@@ -162,7 +162,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                                     Text('Nama Pengalaman: $_experienceName'),
                                     Text('Deskripsi: $_description'),
                                     Text('Kategori: $_category'),
-                                    Text('Thumbnail: $_thumbnailLink'),
+                                    Text('Thumbnail: p$_thumbnailLink'),
                                   ],
                                 ),
                               ),
